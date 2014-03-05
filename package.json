@@ -1,6 +1,6 @@
 {
   "name": "language-maude",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Atom package for Maude",
   "repository": "https://github.com/adamlazz/language-maude",
@@ -8,6 +8,5 @@
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
