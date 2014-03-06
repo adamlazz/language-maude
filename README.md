@@ -1,6 +1,6 @@
 # language-maude package
 
-A package for [Atom][1] for [Maude][2].
+An [Atom][1] package for [The Maude System][2].
 
 Original .tmbundle written by [mkhl][3].
 
