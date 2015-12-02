@@ -1,1414 +1,1481 @@
-'bundleUUID': 'DC431C52-9E0C-49AC-A178-FEF388470627'
-'comment': 'Maude Syntax; version 0.1\n\tThe Regexp for a "Sort" is:\n\t\t/[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*/\n\tThe Regexp for the "Terminator" is:\n\t\t/(?<=[\\s\\]\\)\\}])(\\.)/\n\tThe Regexp to stop in front of the "Terminator":\n\t\t/(?<=[\\s\\]\\)\\}])(?=\\.)/\n\tThe Regexp for a simple "Identifier" is:\n\t\t/(`.|[^`,\\(\\)\\[\\]\\{\\}])+/\n\tThe support.*.prelude matches were extracted from:\n\t\tMaude interpreter standard prelude.\n\t\tVersion alpha88d.\n\t'
-'fileTypes': [
-  'maude'
-  'obj'
+bundleUUID: "DC431C52-9E0C-49AC-A178-FEF388470627"
+comment: '''
+  Maude Syntax; version 0.1
+  	The Regexp for a "Sort" is:
+  		/[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*/
+  	The Regexp for the "Terminator" is:
+  		/(?<=[\\s\\]\\)\\}])(\\.)/
+  	The Regexp to stop in front of the "Terminator":
+  		/(?<=[\\s\\]\\)\\}])(?=\\.)/
+  	The Regexp for a simple "Identifier" is:
+  		/(`.|[^`,\\(\\)\\[\\]\\{\\}])+/
+  	The support.*.prelude matches were extracted from:
+  		Maude interpreter standard prelude.
+  		Version alpha88d.
+  	
+'''
+fileTypes: [
+  "maude"
+  "obj"
 ]
-'foldingStartMarker': '^.*\\b(f?(mod|th)|view)\\b.*$'
-'foldingStopMarker': '^.*\\bend(f?(m|th)|v)\\b.*$'
-'name': 'Maude'
-'patterns': [
+foldingStartMarker: "^.*\\b(f?(mod|th)|view)\\b.*$"
+foldingStopMarker: "^.*\\bend(f?(m|th)|v)\\b.*$"
+name: "Maude"
+patterns: [
   {
-    'include': '#toplevel'
+    include: "#toplevel"
   }
   {
-    'include': '#base'
+    include: "#base"
   }
 ]
-'repository':
-  'base':
-    'patterns': [
+repository:
+  base:
+    patterns: [
       {
-        'include': '#comment'
+        include: "#comment"
       }
       {
-        'begin': '"'
-        'beginCaptures':
-          '0':
-            'name': 'punctuation.definition.string.begin.maude'
-        'end': '"'
-        'endCaptures':
-          '0':
-            'name': 'punctuation.definition.string.end.maude'
-        'name': 'string.quoted.double.maude'
-        'patterns': [
+        begin: "\""
+        beginCaptures:
+          "0":
+            name: "punctuation.definition.string.begin.maude"
+        end: "\""
+        endCaptures:
+          "0":
+            name: "punctuation.definition.string.end.maude"
+        name: "string.quoted.double.maude"
+        patterns: [
           {
-            'match': '\\\\.'
-            'name': 'constant.character.escape.maude'
+            match: "\\\\."
+            name: "constant.character.escape.maude"
           }
         ]
       }
       {
-        'match': '\\b(-?\\d+(/\\d+|(\\.\\d+)?([eE]-?\\d+(\\.\\d+)?)?)?)\\b'
-        'name': 'constant.numeric.maude'
+        match: "\\b(-?\\d+(/\\d+|(\\.\\d+)?([eE]-?\\d+(\\.\\d+)?)?)?)\\b"
+        name: "constant.numeric.maude"
       }
       {
-        'match': '\\b(true|false|Bool)\\b'
-        'name': 'constant.language.bool.maude'
+        match: "\\b(true|false|Bool)\\b"
+        name: "constant.language.bool.maude"
       }
       {
-        'match': '(=/?=|\\b(if|then|else|fi|and|or|xor|not|implies|and-then|or-else)\\b)'
-        'name': 'keyword.operator.bool.maude'
+        match: "(=/?=|\\b(if|then|else|fi|and|or|xor|not|implies|and-then|or-else)\\b)"
+        name: "keyword.operator.bool.maude"
       }
       {
-        'match': '\\b((ARRAY|MAP)\\{\\S+,\\s*\\S+\\}|(LIST(\\*|-AND-SET)?|SET\\*?|SORTABLE-LIST(-AND-SET)?\\\'?|WEAKLY-SORTABLE-LIST\\\'?)\\{\\S+\\}|Qid0|(Nat|Int|Rat|Float|String)(<=?|0)|(BOOL|Bool|CONFIGURATION|CONVERSION|COUNTER|DEFAULT|EXT-BOOL|FLOAT|Float|INT|Int|LOOP-MODE|META-LEVEL|META-MODULE|META-TERM|NAT|NAT-LIST|Nat|QID|QID-LIST|QID-SET|Qid|RANDOM|RAT|Rat|STRICT-TOTAL-ORDER|STRICT-WEAK-ORDER|STRING|String|TOTAL-ORDER|TOTAL-PREORDER|TRIV|TRUTH|TRUTH-VALUE)\\b)'
-        'name': 'support.type.module.prelude.maude'
+        match: "\\b((ARRAY|MAP)\\{\\S+,\\s*\\S+\\}|(LIST(\\*|-AND-SET)?|SET\\*?|SORTABLE-LIST(-AND-SET)?\\'?|WEAKLY-SORTABLE-LIST\\'?)\\{\\S+\\}|Qid0|(Nat|Int|Rat|Float|String)(<=?|0)|(BOOL|Bool|CONFIGURATION|CONVERSION|COUNTER|DEFAULT|EXT-BOOL|FLOAT|Float|INT|Int|LOOP-MODE|META-LEVEL|META-MODULE|META-TERM|NAT|NAT-LIST|Nat|QID|QID-LIST|QID-SET|Qid|RANDOM|RAT|Rat|STRICT-TOTAL-ORDER|STRICT-WEAK-ORDER|STRING|String|TOTAL-ORDER|TOTAL-PREORDER|TRIV|TRUTH|TRUTH-VALUE)\\b)"
+        name: "support.type.module.prelude.maude"
       }
       {
-        'match': '(\\$Split\\{\\S+\\}|\\b((Array|Entry|Map)\\{\\S+,\\s*\\S+\\}|(Element|Item|List|NeList|NeSet|PreList|PreSet|Set)\\{\\S+\\}|(Type|Result(Pair|Triple|4Tuple)|MatchPair|Substitution|Trace)\\?|(Assignment|Attr|AttrSet|Attribute|AttributeSet|Bool|Bound|Char|Cid|Condition|Configuration|Constant|Context|DecFloat|Elt|EmptyCommaList|EmptyTypeSet|EqCondition|Equation|EquationSet|FModule|FTheory|FindResult|FiniteFloat|Float|GTermList|GroundTerm|GroundTermList|Header|Hook|HookList|Import|ImportList|Int|Kind|KindSet|MatchPair|MembAx|MembAxSet|Module|ModuleExpression|Msg|Nat|NeCTermList|NeGroundTermList|NeHookList|NeKindSet|NeParameterDeclList|NeParameterList|NeSortSet|NeTermList|NeTypeList|NeTypeSet|NzInt|NzNat|NzRat|Object|Oid|OpDecl|OpDeclSet|ParameterDecl|ParameterDeclList|ParameterList|Portal|PosRat|PrintOption|PrintOptionSet|Qid|Rat|Renaming|RenamingSet|Result4Tuple|ResultPair|ResultTriple|Rule|RuleSet|SModule|STheory|Sort|SortSet|State|String|SubsortDecl|SubsortDeclSet|Substitution|System|Term|TermList|Trace|TraceStep|Type|TypeList|TypeListSet|TypeSet|Variable|Zero)\\b))'
-        'name': 'support.type.sort.prelude.maude'
+        match: "(\\$Split\\{\\S+\\}|\\b((Array|Entry|Map)\\{\\S+,\\s*\\S+\\}|(Element|Item|List|NeList|NeSet|PreList|PreSet|Set)\\{\\S+\\}|(Type|Result(Pair|Triple|4Tuple)|MatchPair|Substitution|Trace)\\?|(Assignment|Attr|AttrSet|Attribute|AttributeSet|Bool|Bound|Char|Cid|Condition|Configuration|Constant|Context|DecFloat|Elt|EmptyCommaList|EmptyTypeSet|EqCondition|Equation|EquationSet|FModule|FTheory|FindResult|FiniteFloat|Float|GTermList|GroundTerm|GroundTermList|Header|Hook|HookList|Import|ImportList|Int|Kind|KindSet|MatchPair|MembAx|MembAxSet|Module|ModuleExpression|Msg|Nat|NeCTermList|NeGroundTermList|NeHookList|NeKindSet|NeParameterDeclList|NeParameterList|NeSortSet|NeTermList|NeTypeList|NeTypeSet|NzInt|NzNat|NzRat|Object|Oid|OpDecl|OpDeclSet|ParameterDecl|ParameterDeclList|ParameterList|Portal|PosRat|PrintOption|PrintOptionSet|Qid|Rat|Renaming|RenamingSet|Result4Tuple|ResultPair|ResultTriple|Rule|RuleSet|SModule|STheory|Sort|SortSet|State|String|SubsortDecl|SubsortDeclSet|Substitution|System|Term|TermList|Trace|TraceStep|Type|TypeList|TypeListSet|TypeSet|Variable|Zero)\\b))"
+        name: "support.type.sort.prelude.maude"
       }
       {
-        'match': '<(Floats|Qids|Strings)?>|\\$(augment|card|diff|filter|filterOut|hasMapping|intersect|makeList|makeSet|merge|reverse|size|sort|split)\\b|&|,|-|/\\\\?|2^|:[:=]?|;|<[-<=]?|=>?|>[=>]?|\\*|\\+|\\[\\]|\\\\|\\^|\\{\\}|\\|(->)?|~|\\b(abs|acos|ambiguity|anyType|append|ascii|asin|assoc|atan|ceiling|char|comm|completeName|config|cos|counter|ctor|decFloat|delete|downTerm|empty|exp|failure|filter|filterOut|find|flat|float|floor|format|format|frac|front|frozen|gather|gcd|getContext|getEqs|getImports|getKind|getKinds|getMbs|getName|getOps|getRls|getSorts|getSubsorts|getSubstitution|getTerm|getType|glbSorts|head|id|id-hook|idem|insert|intersection|iter|label|last|lcm|leastSort|left-id|length|lesserSorts|log|makeList|makeSet|max|maximalAritySet|maximalSorts|memo|merge|metaApply|metaFrewrite|metaMatch|metaNormalize|metaParse|metaPrettyPrint|metaReduce|metaRewrite|metaSearch|metaSearchPath|metaUnify|metaXapply|metaXmatch|metadata|min|minimalSorts|mixfix|modExp|msg|nil|noMatch|noParse|none|nonexec|notFound|number|object|occurs|op-hook|owise|pi|poly|prec|qid|random|rat|rat|reverse|rfind|right-id|sameKind|sd|sin|size|sort|sortLeq|special|sqrt|strat|string|substr|tail|tan|term-hook|trunc|unbounded|undefined|union|upEqs|upImports|upMbs|upModule|upOpDecls|upRls|upSorts|upSubsortDecls|upTerm|wellFormed|with-parens|divides|in|psubset|quo|rem|subset|xor|s)\\b'
-        'name': 'support.function.operator.prelude.maude'
+        match: "<(Floats|Qids|Strings)?>|\\$(augment|card|diff|filter|filterOut|hasMapping|intersect|makeList|makeSet|merge|reverse|size|sort|split)\\b|&|,|-|/\\\\?|2^|:[:=]?|;|<[-<=]?|=>?|>[=>]?|\\*|\\+|\\[\\]|\\\\|\\^|\\{\\}|\\|(->)?|~|\\b(abs|acos|ambiguity|anyType|append|ascii|asin|assoc|atan|ceiling|char|comm|completeName|config|cos|counter|ctor|decFloat|delete|downTerm|empty|exp|failure|filter|filterOut|find|flat|float|floor|format|format|frac|front|frozen|gather|gcd|getContext|getEqs|getImports|getKind|getKinds|getMbs|getName|getOps|getRls|getSorts|getSubsorts|getSubstitution|getTerm|getType|glbSorts|head|id|id-hook|idem|insert|intersection|iter|label|last|lcm|leastSort|left-id|length|lesserSorts|log|makeList|makeSet|max|maximalAritySet|maximalSorts|memo|merge|metaApply|metaFrewrite|metaMatch|metaNormalize|metaParse|metaPrettyPrint|metaReduce|metaRewrite|metaSearch|metaSearchPath|metaUnify|metaXapply|metaXmatch|metadata|min|minimalSorts|mixfix|modExp|msg|nil|noMatch|noParse|none|nonexec|notFound|number|object|occurs|op-hook|owise|pi|poly|prec|qid|random|rat|rat|reverse|rfind|right-id|sameKind|sd|sin|size|sort|sortLeq|special|sqrt|strat|string|substr|tail|tan|term-hook|trunc|unbounded|undefined|union|upEqs|upImports|upMbs|upModule|upOpDecls|upRls|upSorts|upSubsortDecls|upTerm|wellFormed|with-parens|divides|in|psubset|quo|rem|subset|xor|s)\\b"
+        name: "support.function.operator.prelude.maude"
       }
       {
-        'match': '\\b(f?(mod|th)|view|end(f?(m|th)|v)|from|to|is|inc(luding)?|ex(tending)?|pr(otecting)?|(sub)?sorts?|ops?|vars?|term|label|c?eq|c?mb|c?rl|if)\\b'
-        'name': 'keyword.control.maude'
+        match: "\\b(f?(mod|th)|view|end(f?(m|th)|v)|from|to|is|inc(luding)?|ex(tending)?|pr(otecting)?|(sub)?sorts?|ops?|vars?|term|label|c?eq|c?mb|c?rl|if)\\b"
+        name: "keyword.control.maude"
       }
       {
-        'match': '(:|=|:=|[-~=]>)'
-        'name': 'keyword.operator.maude'
+        match: "(:|=|:=|[-~=]>)"
+        name: "keyword.operator.maude"
       }
       {
-        'match': '[,.:<>\\(\\)\\[\\]\\{\\}]'
-        'name': 'punctuation.other.maude'
+        match: "[,.:<>\\(\\)\\[\\]\\{\\}]"
+        name: "punctuation.other.maude"
       }
     ]
-  'command':
-    'patterns': [
+  command:
+    patterns: [
       {
-        'captures':
-          '1':
-            'name': 'keyword.other.command.system.maude'
-        'match': '\\b(in|load|q(uit)?|eof|popd|pwd|cd|pushd|ls)\\b\\s*(.*)$'
-        'name': 'meta.command.system.maude'
+        captures:
+          "1":
+            name: "keyword.other.command.system.maude"
+        match: "\\b(in|load|q(uit)?|eof|popd|pwd|cd|pushd|ls)\\b\\s*(.*)$"
+        name: "meta.command.system.maude"
       }
       {
-        'captures':
-          '1':
-            'name': 'keyword.other.command.select.maude'
-          '2':
-            'name': 'support.type.module.maude'
-          '3':
-            'name': 'punctuation.terminator.maude'
-        'match': '\\b(select)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(\\.)'
-        'name': 'meta.command.select.maude'
+        captures:
+          "1":
+            name: "keyword.other.command.select.maude"
+          "2":
+            name: "support.type.module.maude"
+          "3":
+            name: "punctuation.terminator.maude"
+        match: "\\b(select)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(\\.)"
+        name: "meta.command.select.maude"
       }
       {
-        'begin': '\\b(parse|(?:(debug)\\s+)?(red(uce)?|[ef]?rew(rite)?)|x?match|search|cont(inue)?|loop)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.other.command.rewrite.maude'
-          '2':
-            'name': 'keyword.other.command.debug.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.command.rewrite.maude'
-        'patterns': [
+        begin: "\\b(parse|(?:(debug)\\s+)?(red(uce)?|[ef]?rew(rite)?)|x?match|search|cont(inue)?|loop)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.other.command.rewrite.maude"
+          "2":
+            name: "keyword.other.command.debug.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.command.rewrite.maude"
+        patterns: [
           {
-            'begin': '\\['
-            'beginCaptures':
-              '0':
-                'name': 'punctuation.definition.bounds.begin.maude'
-            'end': '\\]'
-            'endCaptures':
-              '0':
-                'name': 'punctuation.definition.bounds.end.maude'
-            'name': 'meta.command.bounds.maude'
-            'patterns': [
+            begin: "\\["
+            beginCaptures:
+              "0":
+                name: "punctuation.definition.bounds.begin.maude"
+            end: "\\]"
+            endCaptures:
+              "0":
+                name: "punctuation.definition.bounds.end.maude"
+            name: "meta.command.bounds.maude"
+            patterns: [
               {
-                'include': '#base'
+                include: "#base"
               }
             ]
           }
           {
-            'match': '(?<=\\s)(<=\\?)(?=\\s)'
-            'name': 'keyword.operator.match.maude'
+            match: "(?<=\\s)(<=\\?)(?=\\s)"
+            name: "keyword.operator.match.maude"
           }
           {
-            'match': '(?<=\\s)(=>[1\\+\\*!])(?=\\s)'
-            'name': 'keyword.operator.search.maude'
+            match: "(?<=\\s)(=>[1\\+\\*!])(?=\\s)"
+            name: "keyword.operator.search.maude"
           }
           {
-            'captures':
-              '1':
-                'name': 'keyword.other.command.in-module.maude'
-              '2':
-                'name': 'support.type.module.maude'
-              '3':
-                'name': 'keyword.operator.in-module.maude'
-            'match': '\\b(in)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(:)'
-            'name': 'meta.command.in-module.maude'
+            captures:
+              "1":
+                name: "keyword.other.command.in-module.maude"
+              "2":
+                name: "support.type.module.maude"
+              "3":
+                name: "keyword.operator.in-module.maude"
+            match: "\\b(in)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(:)"
+            name: "meta.command.in-module.maude"
           }
           {
-            'include': '#base'
+            include: "#base"
           }
         ]
       }
       {
-        'begin': '\\b(print)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.other.command.print.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.command.print.maude'
-        'patterns': [
+        begin: "\\b(print)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.other.command.print.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.command.print.maude"
+        patterns: [
           {
-            'begin': '\\b(conceal|reveal)\\b'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.other.command.print.symbol.maude'
-            'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-            'name': 'meta.command.print.symbol.maude'
-            'patterns': [
+            begin: "\\b(conceal|reveal)\\b"
+            beginCaptures:
+              "1":
+                name: "keyword.other.command.print.symbol.maude"
+            end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+            name: "meta.command.print.symbol.maude"
+            patterns: [
               {
-                'include': '#base'
-              }
-            ]
-          }
-        ]
-      }
-      {
-        'begin': '\\b(trace)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.other.command.trace.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.command.trace.maude'
-        'patterns': [
-          {
-            'begin': '\\b(select|deselect)\\b'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.other.command.trace.symbol.maude'
-            'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-            'name': 'meta.command.trace.symbol.maude'
-            'patterns': [
-              {
-                'include': '#base'
-              }
-            ]
-          }
-          {
-            'begin': '\\b(include|exclude)\\b'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.other.command.trace.module.maude'
-            'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-            'name': 'meta.command.trace.module.maude'
-            'patterns': [
-              {
-                'match': '([^\\{\\s]+(?:\\{.+\\})?)'
-                'name': 'support.type.module.maude'
+                include: "#base"
               }
             ]
           }
         ]
       }
       {
-        'name': 'meta.command.debug.maude'
-        'patterns': [
+        begin: "\\b(trace)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.other.command.trace.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.command.trace.maude"
+        patterns: [
           {
-            'captures':
-              '1':
-                'name': 'keyword.other.command.debugger.maude'
-              '2':
-                'name': 'punctuation.terminator.maude'
-            'match': '\\b(resume|abort|step|where)\\b\\s+(\\.)'
-            'name': 'meta.command.debug.debugger.maude'
-          }
-          {
-            'begin': '\\b(break)\\s+((de?)select)\\b'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.other.command.breakpoint.maude'
-              '2':
-                'name': 'keyword.other.command.breakpoint.maude'
-            'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-            'endCaptures':
-              '1':
-                'name': 'punctuation.terminator.maude'
-            'name': 'meta.command.debug.breakpoint.maude'
-          }
-        ]
-      }
-      {
-        'begin': '\\b(show)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.other.command.show.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.command.show.maude'
-        'patterns': [
-          {
-            'match': '\\b(search\\s+graph|path(?:\\s+labels?)?|modules?|all|sorts|ops|vars|mbs|eqs|rls|components|kinds|summary|views?|profile)\\b'
-            'name': 'keyword.other.command.show.maude'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '\\b(set)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.other.command.set.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.command.set.maude'
-        'patterns': [
-          {
-            'captures':
-              '1':
-                'name': 'keyword.other.command.set.show.maude'
-              '2':
-                'name': 'keyword.other.command.set.show-argument.maude'
-            'match': '\\b(show)\\s+(advis(e|or(y|ies))|stats|timing|loop\\s+(stats|timing)|breakdown|c(md|ommand)|gc)\\b'
-            'name': 'meta.command.set.show.maude'
-          }
-          {
-            'captures':
-              '1':
-                'name': 'keyword.other.command.set.print.maude'
-              '2':
-                'name': 'keyword.other.command.set.print-argument.maude'
-            'match': '\\b(print)\\s+(mixfix|flat(tened)?|with\\s+(paren(s|theses)?|alias(es)?)|conceal|number|rat|color|format|graph)\\b'
-            'name': 'meta.command.set.print.maude'
-          }
-          {
-            'captures':
-              '1':
-                'name': 'keyword.other.command.set.trace.maude'
-              '2':
-                'name': 'keyword.other.command.set.trace-argument.maude'
-            'match': '\\b(trace)(?:\\s+(cond(ition)?|whole|subst(itution)?|select|mbs|eqs|rls|rew(rite)?|body))?\\b'
-            'name': 'meta.command.set.trace.maude'
-          }
-          {
-            'captures':
-              '1':
-                'name': 'keyword.other.command.set.clear.maude'
-              '2':
-                'name': 'keyword.other.command.set.clear-argument.maude'
-            'match': '\\b(clear)\\s+(memo|r(l|ule)s?|profile)\\b'
-            'name': 'meta.command.set.clear.maude'
-          }
-          {
-            'captures':
-              '1':
-                'name': 'keyword.other.command.set.import.maude'
-              '2':
-                'name': 'support.type.module.maude'
-            'match': '\\b(include|extend|protect)\\s+([^\\{\\s]+(?:\\{.+\\})?)'
-            'name': 'meta.command.set.import.maude'
-          }
-          {
-            'captures':
-              '1':
-                'name': 'keyword.other.command.set.other.maude'
-            'match': '\\b(break|verbose|profile)\\b'
-            'name': 'meta.command.set.other.maude'
-          }
-          {
-            'captures':
-              '1':
-                'name': 'keyword.other.command.set.value.maude'
-            'match': '\\b(o(?:n|ff))\\b'
-            'name': 'meta.command.set.value.maude'
-          }
-        ]
-      }
-    ]
-  'comment':
-    'patterns': [
-      {
-        'begin': '(?<=^|\\s)\\*\\*\\*\\('
-        'beginCaptures':
-          '0':
-            'name': 'punctuation.definition.comment.begin.maude'
-        'end': '\\)'
-        'endCaptures':
-          '0':
-            'name': 'punctuation.definition.comment.end.maude'
-        'name': 'comment.block.maude'
-        'patterns': [
-          {
-            'include': '#comment-content'
-          }
-        ]
-      }
-      {
-        'captures':
-          '1':
-            'name': 'punctuation.definition.comment.maude'
-        'match': '(?<=^|\\s)(\\*\\*\\*).*$\\n?'
-        'name': 'comment.line.triple-star.maude'
-      }
-      {
-        'captures':
-          '1':
-            'name': 'punctuation.definition.comment.maude'
-        'match': '(?<=^|\\s)(---).*$\\n?'
-        'name': 'comment.line.triple-dash.maude'
-      }
-    ]
-  'comment-content':
-    'begin': '\\('
-    'end': '\\)'
-    'patterns': [
-      {
-        'include': '#comment-content'
-      }
-    ]
-  'condition':
-    'begin': '\\b(if)\\b'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.control.condition.maude'
-    'end': '(?<=\\s)(?=\\.|\\[[^\\]]*(\\]\\s+\\.|$))'
-    'name': 'meta.condition.maude'
-    'patterns': [
-      {
-        'match': '(?<=\\s)/\\\\(?=\\s)'
-        'name': 'keyword.operator.conjunction.maude'
-      }
-      {
-        'match': '(?<=\\s)(:|=|:=)(?=\\s)'
-        'name': 'keyword.operator.condition.maude'
-      }
-      {
-        'include': '#base'
-      }
-    ]
-  'declaration':
-    'patterns': [
-      {
-        'include': '#sort'
-      }
-      {
-        'include': '#subsort'
-      }
-      {
-        'include': '#operator'
-      }
-      {
-        'include': '#variable'
-      }
-    ]
-  'equation':
-    'patterns': [
-      {
-        'begin': '\\b(eq)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.equation.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.equation.eq.maude'
-        'patterns': [
-          {
-            'begin': '(?<=\\s)(=)(?=\\s)'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.operator.equal.maude'
-            'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-            'name': 'meta.equation.eq.rhs.maude'
-            'patterns': [
+            begin: "\\b(select|deselect)\\b"
+            beginCaptures:
+              "1":
+                name: "keyword.other.command.trace.symbol.maude"
+            end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+            name: "meta.command.trace.symbol.maude"
+            patterns: [
               {
-                'include': '#statement-attributes'
-              }
-              {
-                'include': '#nested-brackets'
-              }
-              {
-                'include': '#base'
+                include: "#base"
               }
             ]
           }
           {
-            'begin': '(?<=eq)'
-            'end': '(?<=\\s)(?==\\s)'
-            'name': 'meta.equation.eq.lhs.maude'
-            'patterns': [
+            begin: "\\b(include|exclude)\\b"
+            beginCaptures:
+              "1":
+                name: "keyword.other.command.trace.module.maude"
+            end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+            name: "meta.command.trace.module.maude"
+            patterns: [
               {
-                'include': '#nested-brackets'
-              }
-              {
-                'include': '#base'
+                match: "([^\\{\\s]+(?:\\{.+\\})?)"
+                name: "support.type.module.maude"
               }
             ]
-          }
-          {
-            'include': '#base'
           }
         ]
       }
       {
-        'begin': '\\b(ceq)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.equation.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.equation.ceq.maude'
-        'patterns': [
+        name: "meta.command.debug.maude"
+        patterns: [
           {
-            'begin': '(?<=\\s)(=)(?=\\s)'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.operator.equal.maude'
-            'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-            'name': 'meta.equation.ceq.rhs.maude'
-            'patterns': [
-              {
-                'include': '#condition'
-              }
-              {
-                'include': '#statement-attributes'
-              }
-              {
-                'include': '#nested-brackets'
-              }
-              {
-                'include': '#base'
-              }
-            ]
+            captures:
+              "1":
+                name: "keyword.other.command.debugger.maude"
+              "2":
+                name: "punctuation.terminator.maude"
+            match: "\\b(resume|abort|step|where)\\b\\s+(\\.)"
+            name: "meta.command.debug.debugger.maude"
           }
           {
-            'begin': '(?<=ceq)'
-            'end': '(?<=\\s)(?==\\s)'
-            'name': 'meta.equation.ceq.lhs.maude'
-            'patterns': [
-              {
-                'include': '#nested-brackets'
-              }
-              {
-                'include': '#base'
-              }
-            ]
+            begin: "\\b(break)\\s+((de?)select)\\b"
+            beginCaptures:
+              "1":
+                name: "keyword.other.command.breakpoint.maude"
+              "2":
+                name: "keyword.other.command.breakpoint.maude"
+            end: "(?<=[\\s\\]\\)\\}])(\\.)"
+            endCaptures:
+              "1":
+                name: "punctuation.terminator.maude"
+            name: "meta.command.debug.breakpoint.maude"
+          }
+        ]
+      }
+      {
+        begin: "\\b(show)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.other.command.show.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.command.show.maude"
+        patterns: [
+          {
+            match: "\\b(search\\s+graph|path(?:\\s+labels?)?|modules?|all|sorts|ops|vars|mbs|eqs|rls|components|kinds|summary|views?|profile)\\b"
+            name: "keyword.other.command.show.maude"
           }
           {
-            'include': '#base'
+            include: "#base"
+          }
+        ]
+      }
+      {
+        begin: "\\b(set)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.other.command.set.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.command.set.maude"
+        patterns: [
+          {
+            captures:
+              "1":
+                name: "keyword.other.command.set.show.maude"
+              "2":
+                name: "keyword.other.command.set.show-argument.maude"
+            match: "\\b(show)\\s+(advis(e|or(y|ies))|stats|timing|loop\\s+(stats|timing)|breakdown|c(md|ommand)|gc)\\b"
+            name: "meta.command.set.show.maude"
+          }
+          {
+            captures:
+              "1":
+                name: "keyword.other.command.set.print.maude"
+              "2":
+                name: "keyword.other.command.set.print-argument.maude"
+            match: "\\b(print)\\s+(mixfix|flat(tened)?|with\\s+(paren(s|theses)?|alias(es)?)|conceal|number|rat|color|format|graph)\\b"
+            name: "meta.command.set.print.maude"
+          }
+          {
+            captures:
+              "1":
+                name: "keyword.other.command.set.trace.maude"
+              "2":
+                name: "keyword.other.command.set.trace-argument.maude"
+            match: "\\b(trace)(?:\\s+(cond(ition)?|whole|subst(itution)?|select|mbs|eqs|rls|rew(rite)?|body))?\\b"
+            name: "meta.command.set.trace.maude"
+          }
+          {
+            captures:
+              "1":
+                name: "keyword.other.command.set.clear.maude"
+              "2":
+                name: "keyword.other.command.set.clear-argument.maude"
+            match: "\\b(clear)\\s+(memo|r(l|ule)s?|profile)\\b"
+            name: "meta.command.set.clear.maude"
+          }
+          {
+            captures:
+              "1":
+                name: "keyword.other.command.set.import.maude"
+              "2":
+                name: "support.type.module.maude"
+            match: "\\b(include|extend|protect)\\s+([^\\{\\s]+(?:\\{.+\\})?)"
+            name: "meta.command.set.import.maude"
+          }
+          {
+            captures:
+              "1":
+                name: "keyword.other.command.set.other.maude"
+            match: "\\b(break|verbose|profile)\\b"
+            name: "meta.command.set.other.maude"
+          }
+          {
+            captures:
+              "1":
+                name: "keyword.other.command.set.value.maude"
+            match: "\\b(o(?:n|ff))\\b"
+            name: "meta.command.set.value.maude"
           }
         ]
       }
     ]
-  'import':
-    'patterns': [
+  comment:
+    patterns: [
       {
-        'captures':
-          '1':
-            'name': 'keyword.control.import.maude'
-          '2':
-            'name': 'support.type.module.maude'
-          '3':
-            'name': 'punctuation.terminator.maude'
-        'match': '\\b(inc(?:luding)?|ex(?:tending)?|pr(?:otecting)?)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(\\.)'
-        'name': 'meta.import.module.maude'
+        begin: "(?<=^|\\s)\\*{3}\\("
+        beginCaptures:
+          "0":
+            name: "punctuation.definition.comment.begin.maude"
+        end: "\\)"
+        endCaptures:
+          "0":
+            name: "punctuation.definition.comment.end.maude"
+        name: "comment.block.triple-star.maude"
+        patterns: [
+          {
+            include: "#comment-content"
+          }
+        ]
       }
       {
-        'begin': '\\b(inc(?:luding)?|ex(?:tending)?|pr(?:otecting)?)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.import.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.import.module-expression.maude'
-        'patterns': [
+        begin: "(?<=^|\\s)-{3}\\("
+        beginCaptures:
+          "0":
+            name: "punctuation.definition.comment.begin.maude"
+        end: "\\)"
+        endCaptures:
+          "0":
+            name: "punctuation.definition.comment.end.maude"
+        name: "comment.block.triple-dash.maude"
+        patterns: [
           {
-            'match': '(?<=\\s)\\+(?=\\s)'
-            'name': 'keyword.operator.module-sum.maude'
+            include: "#comment-content"
+          }
+        ]
+      }
+      {
+        captures:
+          "1":
+            name: "punctuation.definition.comment.maude"
+        match: "(?<=^|\\s)(\\*{3}).*$\\n?"
+        name: "comment.line.triple-star.maude"
+      }
+      {
+        captures:
+          "1":
+            name: "punctuation.definition.comment.maude"
+        match: "(?<=^|\\s)(-{3}).*$\\n?"
+        name: "comment.line.triple-dash.maude"
+      }
+    ]
+  "comment-content":
+    begin: "\\("
+    end: "\\)"
+    patterns: [
+      {
+        include: "#comment-content"
+      }
+    ]
+  condition:
+    begin: "\\b(if)\\b"
+    beginCaptures:
+      "1":
+        name: "keyword.control.condition.maude"
+    end: "(?<=\\s)(?=\\.|\\[[^\\]]*(\\]\\s+\\.|$))"
+    name: "meta.condition.maude"
+    patterns: [
+      {
+        match: "(?<=\\s)/\\\\(?=\\s)"
+        name: "keyword.operator.conjunction.maude"
+      }
+      {
+        match: "(?<=\\s)(:|=|:=)(?=\\s)"
+        name: "keyword.operator.condition.maude"
+      }
+      {
+        include: "#base"
+      }
+    ]
+  declaration:
+    patterns: [
+      {
+        include: "#sort"
+      }
+      {
+        include: "#subsort"
+      }
+      {
+        include: "#operator"
+      }
+      {
+        include: "#variable"
+      }
+    ]
+  equation:
+    patterns: [
+      {
+        begin: "\\b(eq)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.equation.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.equation.eq.maude"
+        patterns: [
+          {
+            begin: "(?<=\\s)(=)(?=\\s)"
+            beginCaptures:
+              "1":
+                name: "keyword.operator.equal.maude"
+            end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+            name: "meta.equation.eq.rhs.maude"
+            patterns: [
+              {
+                include: "#statement-attributes"
+              }
+              {
+                include: "#nested-brackets"
+              }
+              {
+                include: "#module"
+              }
+              {
+                include: "#base"
+              }
+            ]
           }
           {
-            'begin': '(?<=\\s)(\\*)(?=\\s)'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.operator.module-rename.maude'
-            'end': '(?<=\\))(?=[\\s\\]\\)\\}])'
-            'name': 'meta.module.rename.maude'
-            'patterns': [
+            begin: "(?<=eq)"
+            end: "(?<=\\s)(?==\\s)"
+            name: "meta.equation.eq.lhs.maude"
+            patterns: [
               {
-                'begin': '(?<=\\s)(\\()'
-                'beginCaptures':
-                  '1':
-                    'name': 'punctuation.definition.renaming.begin.maude'
-                'end': '(\\))(?=[\\s\\]\\)\\}])'
-                'endCaptures':
-                  '1':
-                    'name': 'punctuation.definition.renaming.end.maude'
-                'name': 'meta.module.rename.renaming.maude'
-                'patterns': [
+                include: "#nested-brackets"
+              }
+              {
+                include: "#base"
+              }
+            ]
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+      {
+        begin: "\\b(ceq)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.equation.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.equation.ceq.maude"
+        patterns: [
+          {
+            begin: "(?<=\\s)(=)(?=\\s)"
+            beginCaptures:
+              "1":
+                name: "keyword.operator.equal.maude"
+            end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+            name: "meta.equation.ceq.rhs.maude"
+            patterns: [
+              {
+                include: "#condition"
+              }
+              {
+                include: "#statement-attributes"
+              }
+              {
+                include: "#nested-brackets"
+              }
+              {
+                include: "#module"
+              }
+              {
+                include: "#base"
+              }
+            ]
+          }
+          {
+            begin: "(?<=ceq)"
+            end: "(?<=\\s)(?==\\s)"
+            name: "meta.equation.ceq.lhs.maude"
+            patterns: [
+              {
+                include: "#nested-brackets"
+              }
+              {
+                include: "#base"
+              }
+            ]
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+    ]
+  import:
+    patterns: [
+      {
+        captures:
+          "1":
+            name: "keyword.control.import.maude"
+          "2":
+            name: "support.type.module.maude"
+          "3":
+            name: "punctuation.terminator.maude"
+        match: "\\b(inc(?:luding)?|ex(?:tending)?|pr(?:otecting)?)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(\\.)"
+        name: "meta.import.module.maude"
+      }
+      {
+        begin: "\\b(inc(?:luding)?|ex(?:tending)?|pr(?:otecting)?)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.import.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.import.module-expression.maude"
+        patterns: [
+          {
+            match: "(?<=\\s)\\+(?=\\s)"
+            name: "keyword.operator.module-sum.maude"
+          }
+          {
+            begin: "(?<=\\s)(\\*)(?=\\s)"
+            beginCaptures:
+              "1":
+                name: "keyword.operator.module-rename.maude"
+            end: "(?<=\\))(?=[\\s\\]\\)\\}])"
+            name: "meta.module.rename.maude"
+            patterns: [
+              {
+                begin: "(?<=\\s)(\\()"
+                beginCaptures:
+                  "1":
+                    name: "punctuation.definition.renaming.begin.maude"
+                end: "(\\))(?=[\\s\\]\\)\\}])"
+                endCaptures:
+                  "1":
+                    name: "punctuation.definition.renaming.end.maude"
+                name: "meta.module.rename.renaming.maude"
+                patterns: [
                   {
-                    'include': '#nested-brackets'
+                    include: "#nested-brackets"
                   }
                   {
-                    'include': '#renaming'
+                    include: "#renaming"
                   }
                 ]
               }
             ]
           }
           {
-            'match': '\\b[^\\{\\s]+(?:\\{.+\\})?\\b'
-            'name': 'support.type.module.maude'
+            match: "\\b[^\\{\\s]+(?:\\{.+\\})?\\b"
+            name: "support.type.module.maude"
           }
         ]
       }
     ]
-  'mapping':
-    'patterns': [
+  mapping:
+    patterns: [
       {
-        'include': '#variable'
+        include: "#variable"
       }
       {
-        'captures':
-          '1':
-            'name': 'keyword.control.mapping.maude'
-          '2':
-            'name': 'support.type.sort.maude'
-          '3':
-            'name': 'keyword.control.mapping.maude'
-          '4':
-            'name': 'support.type.sort.maude'
-          '5':
-            'name': 'punctuation.terminator.maude'
-        'match': '\\b(sort)\\s+([A-Z]\\S*)\\s+(to)\\s+([A-Z]\\S*)\\s+(\\.)'
-        'name': 'meta.mapping.sort.maude'
+        captures:
+          "1":
+            name: "keyword.control.mapping.maude"
+          "2":
+            name: "support.type.sort.maude"
+          "3":
+            name: "keyword.control.mapping.maude"
+          "4":
+            name: "support.type.sort.maude"
+          "5":
+            name: "punctuation.terminator.maude"
+        match: "\\b(sort)\\s+([A-Z]\\S*)\\s+(to)\\s+([A-Z]\\S*)\\s+(\\.)"
+        name: "meta.mapping.sort.maude"
       }
       {
-        'captures':
-          '1':
-            'name': 'keyword.control.mapping.maude'
-          '2':
-            'name': 'support.function.statement.maude'
-          '3':
-            'name': 'keyword.control.mapping.maude'
-          '4':
-            'name': 'support.function.statement.maude'
-          '5':
-            'name': 'punctuation.terminator.maude'
-        'match': '\\b(label)\\s+(\\S+)\\s+(to)\\s+(\\S+)\\s+(\\.)'
-        'name': 'meta.mapping.label.maude'
+        captures:
+          "1":
+            name: "keyword.control.mapping.maude"
+          "2":
+            name: "support.function.statement.maude"
+          "3":
+            name: "keyword.control.mapping.maude"
+          "4":
+            name: "support.function.statement.maude"
+          "5":
+            name: "punctuation.terminator.maude"
+        match: "\\b(label)\\s+(\\S+)\\s+(to)\\s+(\\S+)\\s+(\\.)"
+        name: "meta.mapping.label.maude"
       }
       {
-        'captures':
-          '1':
-            'name': 'keyword.control.mapping.maude'
-          '2':
-            'name': 'support.function.operator.maude'
-          '3':
-            'name': 'keyword.control.mapping.maude'
-          '4':
-            'name': 'support.function.operator.maude'
-          '5':
-            'name': 'punctuation.terminator.maude'
-        'match': '\\b(op)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(to)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(\\.)'
-        'name': 'meta.mapping.operator.maude'
+        captures:
+          "1":
+            name: "keyword.control.mapping.maude"
+          "2":
+            name: "support.function.operator.maude"
+          "3":
+            name: "keyword.control.mapping.maude"
+          "4":
+            name: "support.function.operator.maude"
+          "5":
+            name: "punctuation.terminator.maude"
+        match: "\\b(op)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(to)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(\\.)"
+        name: "meta.mapping.operator.maude"
       }
       {
-        'captures':
-          '1':
-            'name': 'keyword.control.mapping.maude'
-          '2':
-            'name': 'support.function.operator.maude'
-          '3':
-            'name': 'keyword.control.mapping.maude'
-          '4':
-            'name': 'keyword.control.mapping.maude'
-          '5':
-            'name': 'support.function.operator.maude'
-          '6':
-            'name': 'punctuation.terminator.maude'
-        'match': '\\b(op)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(to)\\s+(term)\\s+(.+)\\s+(\\.)'
-        'name': 'meta.mapping.operator.maude'
+        captures:
+          "1":
+            name: "keyword.control.mapping.maude"
+          "2":
+            name: "support.function.operator.maude"
+          "3":
+            name: "keyword.control.mapping.maude"
+          "4":
+            name: "keyword.control.mapping.maude"
+          "5":
+            name: "support.function.operator.maude"
+          "6":
+            name: "punctuation.terminator.maude"
+        match: "\\b(op)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(to)\\s+(term)\\s+(.+)\\s+(\\.)"
+        name: "meta.mapping.operator.maude"
       }
       {
-        'captures':
-          '1':
-            'name': 'keyword.control.mapping.maude'
-          '2':
-            'name': 'support.function.operator.maude'
-          '3':
-            'name': 'keyword.operator.op-range.maude'
-          '4':
-            'name': 'support.type.sort.maude'
-          '5':
-            'name': 'keyword.operator.op-domain.maude'
-          '6':
-            'name': 'support.type.sort.maude'
-          '7':
-            'name': 'keyword.control.mapping.maude'
-          '8':
-            'name': 'support.function.operator.maude'
-          '9':
-            'name': 'punctuation.terminator.maude'
-        'match': '\\b(op)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(:)\\s+(.*)\\s+([-~]>)\\s+(\\S+)\\s+(to)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(\\.)'
-        'name': 'meta.mapping.operator.maude'
+        captures:
+          "1":
+            name: "keyword.control.mapping.maude"
+          "2":
+            name: "support.function.operator.maude"
+          "3":
+            name: "keyword.operator.op-range.maude"
+          "4":
+            name: "support.type.sort.maude"
+          "5":
+            name: "keyword.operator.op-domain.maude"
+          "6":
+            name: "support.type.sort.maude"
+          "7":
+            name: "keyword.control.mapping.maude"
+          "8":
+            name: "support.function.operator.maude"
+          "9":
+            name: "punctuation.terminator.maude"
+        match: "\\b(op)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(:)\\s+(.*)\\s+([-~]>)\\s+(\\S+)\\s+(to)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(\\.)"
+        name: "meta.mapping.operator.maude"
       }
       {
-        'include': '#base'
+        include: "#base"
       }
     ]
-  'membership':
-    'patterns': [
+  membership:
+    patterns: [
       {
-        'begin': '\\b(mb)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.membership.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.membership.mb.maude'
-        'patterns': [
+        begin: "\\b(mb)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.membership.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.membership.mb.maude"
+        patterns: [
           {
-            'begin': '(?<=\\s)(:)(?=\\s)'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.operator.member.maude'
-            'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-            'name': 'meta.membership.mb.rhs.maude'
-            'patterns': [
+            begin: "(?<=\\s)(:)(?=\\s)"
+            beginCaptures:
+              "1":
+                name: "keyword.operator.member.maude"
+            end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+            name: "meta.membership.mb.rhs.maude"
+            patterns: [
               {
-                'include': '#statement-attributes'
+                include: "#statement-attributes"
               }
               {
-                'match': '[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*'
-                'name': 'support.type.sort.maude'
+                match: "[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*"
+                name: "support.type.sort.maude"
               }
               {
-                'include': '#nested-brackets'
+                include: "#nested-brackets"
               }
               {
-                'include': '#base'
+                include: "#base"
               }
             ]
           }
           {
-            'begin': '(?<=mb)'
-            'end': '(?<=\\s)(?=:\\s)'
-            'name': 'meta.membership.mb.lhs.maude'
-            'patterns': [
+            begin: "(?<=mb)"
+            end: "(?<=\\s)(?=:\\s)"
+            name: "meta.membership.mb.lhs.maude"
+            patterns: [
               {
-                'include': '#nested-brackets'
+                include: "#nested-brackets"
               }
               {
-                'include': '#base'
-              }
-            ]
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '\\b(cmb)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.membership.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.membership.cmb.maude'
-        'patterns': [
-          {
-            'begin': '(?<=\\s)(:)(?=\\s)'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.operator.member.maude'
-            'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-            'name': 'meta.membership.cmb.rhs.maude'
-            'patterns': [
-              {
-                'include': '#condition'
-              }
-              {
-                'include': '#statement-attributes'
-              }
-              {
-                'match': '[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*'
-                'name': 'support.type.sort.maude'
-              }
-              {
-                'include': '#nested-brackets'
-              }
-              {
-                'include': '#base'
+                include: "#base"
               }
             ]
           }
           {
-            'begin': '(?<=cmb)'
-            'end': '(?<=\\s)(?=:\\s)'
-            'name': 'meta.membership.cmb.lhs.maude'
-            'patterns': [
+            include: "#base"
+          }
+        ]
+      }
+      {
+        begin: "\\b(cmb)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.membership.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.membership.cmb.maude"
+        patterns: [
+          {
+            begin: "(?<=\\s)(:)(?=\\s)"
+            beginCaptures:
+              "1":
+                name: "keyword.operator.member.maude"
+            end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+            name: "meta.membership.cmb.rhs.maude"
+            patterns: [
               {
-                'include': '#nested-brackets'
+                include: "#condition"
               }
               {
-                'include': '#base'
-              }
-            ]
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-    ]
-  'module':
-    'patterns': [
-      {
-        'begin': '\\b(fmod)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(is)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.module.maude'
-          '2':
-            'name': 'entity.name.type.module.maude'
-          '3':
-            'name': 'keyword.control.module.maude'
-        'end': '\\b(endfm)\\b'
-        'endCaptures':
-          '1':
-            'name': 'keyword.control.module.maude'
-        'name': 'meta.module.fmod.maude'
-        'patterns': [
-          {
-            'include': '#import'
-          }
-          {
-            'include': '#declaration'
-          }
-          {
-            'include': '#statement'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '\\b(mod)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(is)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.module.maude'
-          '2':
-            'name': 'entity.name.type.module.maude'
-          '3':
-            'name': 'keyword.control.module.maude'
-        'end': '\\b(endm)\\b'
-        'endCaptures':
-          '1':
-            'name': 'keyword.control.module.maude'
-        'name': 'meta.module.mod.maude'
-        'patterns': [
-          {
-            'include': '#import'
-          }
-          {
-            'include': '#declaration'
-          }
-          {
-            'include': '#statement'
-          }
-          {
-            'include': '#rule'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '\\b(fth)\\s+([^\\{\\s]+)\\s+(is)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.module.maude'
-          '2':
-            'name': 'entity.name.type.module.maude'
-          '3':
-            'name': 'keyword.control.module.maude'
-        'end': '\\b(endfth)\\b'
-        'endCaptures':
-          '1':
-            'name': 'keyword.control.module.maude'
-        'name': 'meta.module.fth.maude'
-        'patterns': [
-          {
-            'include': '#import'
-          }
-          {
-            'include': '#declaration'
-          }
-          {
-            'include': '#statement'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '\\b(th)\\s+([^\\{\\s]+)\\s+(is)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.module.maude'
-          '2':
-            'name': 'entity.name.type.module.maude'
-          '3':
-            'name': 'keyword.control.module.maude'
-        'end': '\\b(endth)\\b'
-        'endCaptures':
-          '1':
-            'name': 'keyword.control.module.maude'
-        'name': 'meta.module.th.maude'
-        'patterns': [
-          {
-            'include': '#import'
-          }
-          {
-            'include': '#declaration'
-          }
-          {
-            'include': '#statement'
-          }
-          {
-            'include': '#rule'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '\\b(view)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(from)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(to)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(is)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.module.maude'
-          '2':
-            'name': 'entity.name.type.module.maude'
-          '3':
-            'name': 'keyword.control.module.maude'
-          '4':
-            'name': 'support.type.module.maude'
-          '5':
-            'name': 'keyword.control.module.maude'
-          '6':
-            'name': 'support.type.module.maude'
-          '7':
-            'name': 'keyword.control.module.maude'
-        'end': '\\b(endv)\\b'
-        'endCaptures':
-          '1':
-            'name': 'keyword.control.module.maude'
-        'name': 'meta.view.maude'
-        'patterns': [
-          {
-            'include': '#mapping'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-    ]
-  'nested-brackets':
-    'patterns': [
-      {
-        'begin': '(?<=[^`])\\['
-        'captures':
-          '0':
-            'name': 'punctuation.section.brackets.maude'
-        'end': '\\]'
-        'patterns': [
-          {
-            'include': '#nested-brackets'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '(?<=[^`])\\('
-        'captures':
-          '0':
-            'name': 'punctuation.section.parens.maude'
-        'end': '\\)'
-        'patterns': [
-          {
-            'include': '#nested-brackets'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-    ]
-  'operator':
-    'begin': '\\b(ops?)\\b'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.control.operator.maude'
-    'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-    'endCaptures':
-      '1':
-        'name': 'punctuation.terminator.maude'
-    'name': 'meta.definition.operator.maude'
-    'patterns': [
-      {
-        'begin': '(?<=\\s)(:)(?=\\s)'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.operator.op-range.maude'
-        'end': '(?=\\s[-~]>\\s)'
-        'name': 'meta.definition.operator.range.maude'
-        'patterns': [
-          {
-            'match': '[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*'
-            'name': 'support.type.sort.maude'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '(?<=\\s)([-~]>)\\s+(?:([^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*)|(\\[[^\\]]+\\]))(?=\\s)'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.operator.op-domain.maude'
-          '2':
-            'name': 'support.type.sort.maude'
-          '3':
-            'name': 'support.type.kind.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-        'name': 'meta.definition.operator.domain.maude'
-        'patterns': [
-          {
-            'include': '#operator-attributes'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '\\('
-        'beginCaptures':
-          '0':
-            'name': 'punctuation.definition.operator.begin.maude'
-        'contentName': 'entity.name.function.operator.maude'
-        'end': '\\)'
-        'endCaptures':
-          '0':
-            'name': 'punctuation.definition.operator.end.maude'
-        'patterns': [
-          {
-            'include': '#nested-brackets'
-          }
-        ]
-      }
-      {
-        'match': '\\S+'
-        'name': 'entity.name.function.operator.maude'
-      }
-      {
-        'include': '#base'
-      }
-    ]
-  'operator-attributes':
-    'begin': '(?<=\\s)(\\[)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.attributes.begin.maude'
-    'end': '(\\])'
-    'endCaptures':
-      '1':
-        'name': 'punctuation.definition.attributes.end.maude'
-    'name': 'meta.definition.attributes.operator.maude'
-    'patterns': [
-      {
-        'match': '\\b((id|op|term)-hook)\\b'
-        'name': 'keyword.other.special-hook.maude'
-      }
-      {
-        'match': '(?x)\n\t\t\t\t\t\\b\n\t\t\t\t\t((assoc(iative)?\n\t\t\t\t\t |c(o(mm(utative)?\n\t\t\t\t\t     |n(fig(uration)?\n\t\t\t\t\t       |structor))\n\t\t\t\t\t   |tor)\n\t\t\t\t\t |ditto\n\t\t\t\t\t |f(ormat\n\t\t\t\t\t   |rozen)\n\t\t\t\t\t |gather\n\t\t\t\t\t |i(dem(potent)?\n\t\t\t\t\t   |ter(ated)?)\n\t\t\t\t\t |l(abel\n\t\t\t\t\t   |eft)\n\t\t\t\t\t |m(e(mo\n\t\t\t\t\t     |ssage\n\t\t\t\t\t     |tadata)\n\t\t\t\t\t   |sg)\n\t\t\t\t\t |nonexec\n\t\t\t\t\t |o(bj(ect)?\n\t\t\t\t\t   |(ther)?wise)\n\t\t\t\t\t |p(oly(morphic)?\n\t\t\t\t\t   |rec(edence)?)\n\t\t\t\t\t |right\n\t\t\t\t\t |s(pecial\n\t\t\t\t\t   |trat(egy)?)\n\t\t\t\t\t )\\b\n\t\t\t\t\t|id(entity)?:)\n\t\t\t\t\t'
-        'name': 'keyword.other.attribute.maude'
-      }
-      {
-        'include': '#nested-brackets'
-      }
-      {
-        'include': '#base'
-      }
-    ]
-  'renaming':
-    'patterns': [
-      {
-        'match': ',(?=\\s)'
-        'name': 'punctuation.separator.renaming.maude'
-      }
-      {
-        'captures':
-          '1':
-            'name': 'keyword.control.renaming.maude'
-          '2':
-            'name': 'support.type.sort.maude'
-          '3':
-            'name': 'keyword.control.renaming.maude'
-          '4':
-            'name': 'support.type.sort.maude'
-        'match': '\\b(sort)\\s+([A-Z]\\S*)\\s+(to)\\s+([A-Z]\\S*)\\s*(?=[,\\)])'
-        'name': 'meta.renaming.sort.maude'
-      }
-      {
-        'captures':
-          '1':
-            'name': 'keyword.control.renaming.maude'
-          '2':
-            'name': 'support.function.statement.maude'
-          '3':
-            'name': 'keyword.control.renaming.maude'
-          '4':
-            'name': 'support.function.statement.maude'
-        'match': '\\b(label)\\s+(\\S+)\\s+(to)\\s+(\\S+)\\s*(?=[,\\)])'
-        'name': 'meta.renaming.label.maude'
-      }
-      {
-        'begin': '\\b(op)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(to)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.renaming.maude'
-          '2':
-            'name': 'support.function.operator.maude'
-          '3':
-            'name': 'keyword.control.renaming.maude'
-          '4':
-            'name': 'support.function.operator.maude'
-        'end': '(?=[,\\)])'
-        'name': 'meta.renaming.operator.maude'
-        'patterns': [
-          {
-            'include': '#renaming-attributes'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '\\b(op)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(:)\\s+(.*)\\s+([-~]>)\\s+(\\S+)\\s+(to)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\b'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.renaming.maude'
-          '2':
-            'name': 'support.function.operator.maude'
-          '3':
-            'name': 'keyword.operator.op-range.maude'
-          '4':
-            'name': 'support.type.sort.maude'
-          '5':
-            'name': 'keyword.operator.op-domain.maude'
-          '6':
-            'name': 'support.type.sort.maude'
-          '7':
-            'name': 'keyword.control.renaming.maude'
-          '8':
-            'name': 'support.function.operator.maude'
-        'end': '(?=[,\\)])'
-        'name': 'meta.renaming.operator.maude'
-        'patterns': [
-          {
-            'include': '#renaming-attributes'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'include': '#base'
-      }
-    ]
-  'renaming-attributes':
-    'begin': '(?<=\\s)(\\[)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.attributes.begin.maude'
-    'end': '(\\])'
-    'endCaptures':
-      '1':
-        'name': 'punctuation.definition.attributes.end.maude'
-    'name': 'meta.renaming.operator.attributes.maude'
-    'patterns': [
-      {
-        'match': '\\b(prec|gather|format)\\b'
-        'name': 'keyword.other.attribute.maude'
-      }
-      {
-        'include': '#nested-brackets'
-      }
-      {
-        'include': '#base'
-      }
-    ]
-  'rule':
-    'patterns': [
-      {
-        'begin': '\\b(rl)\\b(?:\\s+\\[\\s*([^\\]]+)\\s*\\]\\s+(:)(?=\\s))?'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.rule.maude'
-          '2':
-            'name': 'entity.name.function.rule.maude'
-          '3':
-            'name': 'keyword.operator.rule-name.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.rule.rl.maude'
-        'patterns': [
-          {
-            'begin': '(?<=\\s)(=>)(?=\\s)'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.operator.rewrite.maude'
-            'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-            'name': 'meta.rule.rl.rhs.maude'
-            'patterns': [
-              {
-                'include': '#statement-attributes'
+                include: "#statement-attributes"
               }
               {
-                'include': '#base'
+                match: "[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*"
+                name: "support.type.sort.maude"
+              }
+              {
+                include: "#nested-brackets"
+              }
+              {
+                include: "#base"
               }
             ]
           }
           {
-            'match': '[^\\s\\(\\[]+(\\([^\\)]+\\)|\\[[^\\]]+\\])?'
-            'name': 'meta.rule.rl.lhs.maude'
-          }
-          {
-            'include': '#base'
-          }
-        ]
-      }
-      {
-        'begin': '\\b(crl)\\b(?:\\s+\\[\\s*([^\\]]+)\\s*\\]\\s+(:)(?=\\s))?'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.control.rule.maude'
-          '2':
-            'name': 'entity.name.function.rule.maude'
-          '3':
-            'name': 'keyword.operator.rule-name.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-        'endCaptures':
-          '1':
-            'name': 'punctuation.terminator.maude'
-        'name': 'meta.rule.crl.maude'
-        'patterns': [
-          {
-            'begin': '(?<=\\s)(=>)(?=\\s)'
-            'beginCaptures':
-              '1':
-                'name': 'keyword.operator.rewrite.maude'
-            'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-            'name': 'meta.rule.crl.rhs.maude'
-            'patterns': [
+            begin: "(?<=cmb)"
+            end: "(?<=\\s)(?=:\\s)"
+            name: "meta.membership.cmb.lhs.maude"
+            patterns: [
               {
-                'include': '#condition'
+                include: "#nested-brackets"
               }
               {
-                'include': '#statement-attributes'
-              }
-              {
-                'include': '#base'
+                include: "#base"
               }
             ]
           }
           {
-            'match': '[^\\s\\(\\[]+(\\([^\\)]+\\)|\\[[^\\]]+\\])?'
-            'name': 'meta.rule.crl.lhs.maude'
-          }
-          {
-            'include': '#base'
+            include: "#base"
           }
         ]
       }
     ]
-  'sort':
-    'begin': '\\b(sorts?)\\b'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.control.sort.maude'
-    'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-    'endCaptures':
-      '1':
-        'name': 'punctuation.terminator.maude'
-    'name': 'meta.definition.sort.maude'
-    'patterns': [
+  module:
+    patterns: [
       {
-        'match': '[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*'
-        'name': 'entity.name.type.sort.maude'
-      }
-      {
-        'include': '#base'
-      }
-    ]
-  'statement':
-    'patterns': [
-      {
-        'include': '#equation'
-      }
-      {
-        'include': '#membership'
-      }
-    ]
-  'statement-attributes':
-    'begin': '(?<=\\s)(\\[)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.attributes.begin.maude'
-    'end': '(\\])'
-    'endCaptures':
-      '1':
-        'name': 'punctuation.definition.attributes.end.maude'
-    'name': 'meta.definition.attributes.statement.maude'
-    'patterns': [
-      {
-        'match': '\\b(nonexec|o(ther)?wise|metadata)\\b'
-        'name': 'keyword.other.attribute.maude'
-      }
-      {
-        'captures':
-          '1':
-            'name': 'keyword.other.attribute.maude'
-          '2':
-            'name': 'entity.name.function.statement.maude'
-        'match': '\\b(label)\\s+(\\S+)\\b'
-        'name': 'meta.definition.attributes.statement.label.maude'
-      }
-      {
-        'include': '#nested-brackets'
-      }
-      {
-        'include': '#base'
-      }
-    ]
-  'subsort':
-    'begin': '\\b(subsorts?)\\b'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.control.subsort.maude'
-    'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-    'endCaptures':
-      '1':
-        'name': 'punctuation.terminator.maude'
-    'name': 'meta.definition.subsort.maude'
-    'patterns': [
-      {
-        'match': '(?<=\\s)<(?=\\s)'
-        'name': 'keyword.operator.subsort.maude'
-      }
-      {
-        'match': '[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*'
-        'name': 'support.type.sort.maude'
-      }
-      {
-        'include': '#base'
-      }
-    ]
-  'toplevel':
-    'patterns': [
-      {
-        'begin': '(?<=[^`])\\('
-        'captures':
-          '0':
-            'name': 'punctuation.section.parens.maude'
-        'comment': 'Parens are allowed at the top level.'
-        'end': '\\)'
-        'patterns': [
+        begin: "\\b(fmod)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(is)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.module.maude"
+          "2":
+            name: "entity.name.type.module.maude"
+          "3":
+            name: "keyword.control.module.maude"
+        end: "\\b(endfm)\\b"
+        endCaptures:
+          "1":
+            name: "keyword.control.module.maude"
+        name: "meta.module.fmod.maude"
+        patterns: [
           {
-            'include': '#toplevel'
+            include: "#import"
+          }
+          {
+            include: "#declaration"
+          }
+          {
+            include: "#statement"
+          }
+          {
+            include: "#base"
           }
         ]
       }
       {
-        'include': '#module'
-      }
-      {
-        'include': '#command'
-      }
-    ]
-  'variable':
-    'begin': '\\b(vars?)\\b'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.control.variable.maude'
-    'end': '(?<=[\\s\\]\\)\\}])(\\.)'
-    'endCaptures':
-      '1':
-        'name': 'punctuation.terminator.maude'
-      '2':
-        'name': 'support.type.sort.maude'
-      '3':
-        'name': 'support.type.kind.maude'
-    'name': 'meta.definition.variable.maude'
-    'patterns': [
-      {
-        'begin': '(?<=\\s)(:)(?=\\s)'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.operator.member.maude'
-        'end': '(?<=[\\s\\]\\)\\}])(?=\\.)'
-        'name': 'meta.definition.variable.sort.maude'
-        'patterns': [
+        begin: "\\b(mod)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(is)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.module.maude"
+          "2":
+            name: "entity.name.type.module.maude"
+          "3":
+            name: "keyword.control.module.maude"
+        end: "\\b(endm)\\b"
+        endCaptures:
+          "1":
+            name: "keyword.control.module.maude"
+        name: "meta.module.mod.maude"
+        patterns: [
           {
-            'match': '[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*'
-            'name': 'support.type.sort.maude'
+            include: "#import"
           }
           {
-            'match': '\\[[^\\]]+\\]'
-            'name': 'support.type.kind.maude'
+            include: "#declaration"
           }
           {
-            'include': '#base'
+            include: "#statement"
+          }
+          {
+            include: "#rule"
+          }
+          {
+            include: "#base"
           }
         ]
       }
       {
-        'match': '\\S+'
-        'name': 'variable.other.var.maude'
+        begin: "\\b(fth)\\s+([^\\{\\s]+)\\s+(is)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.module.maude"
+          "2":
+            name: "entity.name.type.module.maude"
+          "3":
+            name: "keyword.control.module.maude"
+        end: "\\b(endfth)\\b"
+        endCaptures:
+          "1":
+            name: "keyword.control.module.maude"
+        name: "meta.module.fth.maude"
+        patterns: [
+          {
+            include: "#import"
+          }
+          {
+            include: "#declaration"
+          }
+          {
+            include: "#statement"
+          }
+          {
+            include: "#base"
+          }
+        ]
       }
       {
-        'include': '#base'
+        begin: "\\b(th)\\s+([^\\{\\s]+)\\s+(is)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.module.maude"
+          "2":
+            name: "entity.name.type.module.maude"
+          "3":
+            name: "keyword.control.module.maude"
+        end: "\\b(endth)\\b"
+        endCaptures:
+          "1":
+            name: "keyword.control.module.maude"
+        name: "meta.module.th.maude"
+        patterns: [
+          {
+            include: "#import"
+          }
+          {
+            include: "#declaration"
+          }
+          {
+            include: "#statement"
+          }
+          {
+            include: "#rule"
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+      {
+        begin: "\\b(view)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(from)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(to)\\s+([^\\{\\s]+(?:\\{.+\\})?)\\s+(is)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.module.maude"
+          "2":
+            name: "entity.name.type.module.maude"
+          "3":
+            name: "keyword.control.module.maude"
+          "4":
+            name: "support.type.module.maude"
+          "5":
+            name: "keyword.control.module.maude"
+          "6":
+            name: "support.type.module.maude"
+          "7":
+            name: "keyword.control.module.maude"
+        end: "\\b(endv)\\b"
+        endCaptures:
+          "1":
+            name: "keyword.control.module.maude"
+        name: "meta.view.maude"
+        patterns: [
+          {
+            include: "#mapping"
+          }
+          {
+            include: "#base"
+          }
+        ]
       }
     ]
-'scopeName': 'source.maude'
+  "nested-brackets":
+    patterns: [
+      {
+        begin: "(?<=[^`])\\["
+        captures:
+          "0":
+            name: "punctuation.section.brackets.maude"
+        end: "\\]"
+        patterns: [
+          {
+            include: "#nested-brackets"
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+      {
+        begin: "(?<=[^`])\\("
+        captures:
+          "0":
+            name: "punctuation.section.parens.maude"
+        end: "\\)"
+        patterns: [
+          {
+            include: "#nested-brackets"
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+    ]
+  operator:
+    begin: "\\b(ops?)\\b"
+    beginCaptures:
+      "1":
+        name: "keyword.control.operator.maude"
+    end: "(?<=[\\s\\]\\)\\}])(\\.)"
+    endCaptures:
+      "1":
+        name: "punctuation.terminator.maude"
+    name: "meta.definition.operator.maude"
+    patterns: [
+      {
+        begin: "(?<=\\s)(:)(?=\\s)"
+        beginCaptures:
+          "1":
+            name: "keyword.operator.op-range.maude"
+        end: "(?=\\s[-~]>\\s)"
+        name: "meta.definition.operator.range.maude"
+        patterns: [
+          {
+            match: "[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*"
+            name: "support.type.sort.maude"
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+      {
+        begin: "(?<=\\s)([-~]>)\\s+(?:([^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*)|(\\[[^\\]]+\\]))(?=\\s)"
+        beginCaptures:
+          "1":
+            name: "keyword.operator.op-domain.maude"
+          "2":
+            name: "support.type.sort.maude"
+          "3":
+            name: "support.type.kind.maude"
+        end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+        name: "meta.definition.operator.domain.maude"
+        patterns: [
+          {
+            include: "#operator-attributes"
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+      {
+        begin: "\\("
+        beginCaptures:
+          "0":
+            name: "punctuation.definition.operator.begin.maude"
+        contentName: "entity.name.function.operator.maude"
+        end: "\\)"
+        endCaptures:
+          "0":
+            name: "punctuation.definition.operator.end.maude"
+        patterns: [
+          {
+            include: "#nested-brackets"
+          }
+        ]
+      }
+      {
+        match: "\\S+"
+        name: "entity.name.function.operator.maude"
+      }
+      {
+        include: "#base"
+      }
+    ]
+  "operator-attributes":
+    begin: "(?<=\\s)(\\[)"
+    beginCaptures:
+      "1":
+        name: "punctuation.definition.attributes.begin.maude"
+    end: "(\\])"
+    endCaptures:
+      "1":
+        name: "punctuation.definition.attributes.end.maude"
+    name: "meta.definition.attributes.operator.maude"
+    patterns: [
+      {
+        match: "\\b((id|op|term)-hook)\\b"
+        name: "keyword.other.special-hook.maude"
+      }
+      {
+        match: '''
+          (?x)
+          					\\b
+          					((assoc(iative)?
+          					 |c(o(mm(utative)?
+          					     |n(fig(uration)?
+          					       |structor))
+          					   |tor)
+          					 |ditto
+          					 |f(ormat
+          					   |rozen)
+          					 |gather
+          					 |i(dem(potent)?
+          					   |ter(ated)?)
+          					 |l(abel
+          					   |eft)
+          					 |m(e(mo
+          					     |ssage
+          					     |tadata)
+          					   |sg)
+          					 |nonexec
+          					 |o(bj(ect)?
+          					   |(ther)?wise)
+          					 |p(oly(morphic)?
+          					   |rec(edence)?)
+          					 |right
+          					 |s(pecial
+          					   |trat(egy)?)
+          					 )\\b
+          					|id(entity)?:)
+          					
+        '''
+        name: "keyword.other.attribute.maude"
+      }
+      {
+        include: "#nested-brackets"
+      }
+      {
+        include: "#base"
+      }
+    ]
+  renaming:
+    patterns: [
+      {
+        match: ",(?=\\s)"
+        name: "punctuation.separator.renaming.maude"
+      }
+      {
+        captures:
+          "1":
+            name: "keyword.control.renaming.maude"
+          "2":
+            name: "support.type.sort.maude"
+          "3":
+            name: "keyword.control.renaming.maude"
+          "4":
+            name: "support.type.sort.maude"
+        match: "\\b(sort)\\s+([A-Z]\\S*)\\s+(to)\\s+([A-Z]\\S*)\\s*(?=[,\\)])"
+        name: "meta.renaming.sort.maude"
+      }
+      {
+        captures:
+          "1":
+            name: "keyword.control.renaming.maude"
+          "2":
+            name: "support.function.statement.maude"
+          "3":
+            name: "keyword.control.renaming.maude"
+          "4":
+            name: "support.function.statement.maude"
+        match: "\\b(label)\\s+(\\S+)\\s+(to)\\s+(\\S+)\\s*(?=[,\\)])"
+        name: "meta.renaming.label.maude"
+      }
+      {
+        begin: "\\b(op)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(to)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.renaming.maude"
+          "2":
+            name: "support.function.operator.maude"
+          "3":
+            name: "keyword.control.renaming.maude"
+          "4":
+            name: "support.function.operator.maude"
+        end: "(?=[,\\)])"
+        name: "meta.renaming.operator.maude"
+        patterns: [
+          {
+            include: "#renaming-attributes"
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+      {
+        begin: "\\b(op)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\s+(:)\\s+(.*)\\s+([-~]>)\\s+(\\S+)\\s+(to)\\s+((?:`.|[^`,\\(\\)\\[\\]\\{\\}])+)\\b"
+        beginCaptures:
+          "1":
+            name: "keyword.control.renaming.maude"
+          "2":
+            name: "support.function.operator.maude"
+          "3":
+            name: "keyword.operator.op-range.maude"
+          "4":
+            name: "support.type.sort.maude"
+          "5":
+            name: "keyword.operator.op-domain.maude"
+          "6":
+            name: "support.type.sort.maude"
+          "7":
+            name: "keyword.control.renaming.maude"
+          "8":
+            name: "support.function.operator.maude"
+        end: "(?=[,\\)])"
+        name: "meta.renaming.operator.maude"
+        patterns: [
+          {
+            include: "#renaming-attributes"
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+      {
+        include: "#base"
+      }
+    ]
+  "renaming-attributes":
+    begin: "(?<=\\s)(\\[)"
+    beginCaptures:
+      "1":
+        name: "punctuation.definition.attributes.begin.maude"
+    end: "(\\])"
+    endCaptures:
+      "1":
+        name: "punctuation.definition.attributes.end.maude"
+    name: "meta.renaming.operator.attributes.maude"
+    patterns: [
+      {
+        match: "\\b(prec|gather|format)\\b"
+        name: "keyword.other.attribute.maude"
+      }
+      {
+        include: "#nested-brackets"
+      }
+      {
+        include: "#base"
+      }
+    ]
+  rule:
+    patterns: [
+      {
+        begin: "\\b(rl)\\b(?:\\s+\\[\\s*([^\\]]+)\\s*\\]\\s*(:)(?=\\s))?"
+        beginCaptures:
+          "1":
+            name: "keyword.control.rule.maude"
+          "2":
+            name: "entity.name.function.rule.maude"
+          "3":
+            name: "keyword.operator.rule-name.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.rule.rl.maude"
+        patterns: [
+          {
+            begin: "(?<=\\s)(=>)(?=\\s)"
+            beginCaptures:
+              "1":
+                name: "keyword.operator.rewrite.maude"
+            end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+            name: "meta.rule.rl.rhs.maude"
+            patterns: [
+              {
+                include: "#statement-attributes"
+              }
+              {
+                include: "#base"
+              }
+            ]
+          }
+          {
+            match: "[^\\s\\(\\[]+(\\([^\\)]+\\)|\\[[^\\]]+\\])?"
+            name: "meta.rule.rl.lhs.maude"
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+      {
+        begin: "\\b(crl)\\b(?:\\s+\\[\\s*([^\\]]+)\\s*\\]\\s*(:)(?=\\s))?"
+        beginCaptures:
+          "1":
+            name: "keyword.control.rule.maude"
+          "2":
+            name: "entity.name.function.rule.maude"
+          "3":
+            name: "keyword.operator.rule-name.maude"
+        end: "(?<=[\\s\\]\\)\\}])(\\.)"
+        endCaptures:
+          "1":
+            name: "punctuation.terminator.maude"
+        name: "meta.rule.crl.maude"
+        patterns: [
+          {
+            begin: "(?<=\\s)(=>)(?=\\s)"
+            beginCaptures:
+              "1":
+                name: "keyword.operator.rewrite.maude"
+            end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+            name: "meta.rule.crl.rhs.maude"
+            patterns: [
+              {
+                include: "#condition"
+              }
+              {
+                include: "#statement-attributes"
+              }
+              {
+                include: "#base"
+              }
+            ]
+          }
+          {
+            match: "[^\\s\\(\\[]+(\\([^\\)]+\\)|\\[[^\\]]+\\])?"
+            name: "meta.rule.crl.lhs.maude"
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+    ]
+  sort:
+    begin: "\\b(sorts?)\\b"
+    beginCaptures:
+      "1":
+        name: "keyword.control.sort.maude"
+    end: "(?<=[\\s\\]\\)\\}])(\\.)"
+    endCaptures:
+      "1":
+        name: "punctuation.terminator.maude"
+    name: "meta.definition.sort.maude"
+    patterns: [
+      {
+        match: "[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*"
+        name: "entity.name.type.sort.maude"
+      }
+      {
+        include: "#base"
+      }
+    ]
+  statement:
+    patterns: [
+      {
+        include: "#equation"
+      }
+      {
+        include: "#membership"
+      }
+    ]
+  "statement-attributes":
+    begin: "(?<=\\s)(\\[)"
+    beginCaptures:
+      "1":
+        name: "punctuation.definition.attributes.begin.maude"
+    end: "(\\])"
+    endCaptures:
+      "1":
+        name: "punctuation.definition.attributes.end.maude"
+    name: "meta.definition.attributes.statement.maude"
+    patterns: [
+      {
+        match: "\\b(nonexec|o(ther)?wise|metadata)\\b"
+        name: "keyword.other.attribute.maude"
+      }
+      {
+        captures:
+          "1":
+            name: "keyword.other.attribute.maude"
+          "2":
+            name: "entity.name.function.statement.maude"
+        match: "\\b(label)\\s+(\\S+)\\b"
+        name: "meta.definition.attributes.statement.label.maude"
+      }
+      {
+        include: "#nested-brackets"
+      }
+      {
+        include: "#base"
+      }
+    ]
+  subsort:
+    begin: "\\b(subsorts?)\\b"
+    beginCaptures:
+      "1":
+        name: "keyword.control.subsort.maude"
+    end: "(?<=[\\s\\]\\)\\}])(\\.)"
+    endCaptures:
+      "1":
+        name: "punctuation.terminator.maude"
+    name: "meta.definition.subsort.maude"
+    patterns: [
+      {
+        match: "(?<=\\s)<(?=\\s)"
+        name: "keyword.operator.subsort.maude"
+      }
+      {
+        match: "[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*"
+        name: "support.type.sort.maude"
+      }
+      {
+        include: "#base"
+      }
+    ]
+  toplevel:
+    patterns: [
+      {
+        begin: "(?<=[^`])\\("
+        captures:
+          "0":
+            name: "punctuation.section.parens.maude"
+        comment: "Parens are allowed at the top level."
+        end: "\\)"
+        patterns: [
+          {
+            include: "#toplevel"
+          }
+        ]
+      }
+      {
+        include: "#module"
+      }
+      {
+        include: "#command"
+      }
+    ]
+  variable:
+    begin: "\\b(vars?)\\b"
+    beginCaptures:
+      "1":
+        name: "keyword.control.variable.maude"
+    end: "(?<=[\\s\\]\\)\\}])(\\.)"
+    endCaptures:
+      "1":
+        name: "punctuation.terminator.maude"
+      "2":
+        name: "support.type.sort.maude"
+      "3":
+        name: "support.type.kind.maude"
+    name: "meta.definition.variable.maude"
+    patterns: [
+      {
+        begin: "(?<=\\s)(:)(?=\\s)"
+        beginCaptures:
+          "1":
+            name: "keyword.operator.member.maude"
+        end: "(?<=[\\s\\]\\)\\}])(?=\\.)"
+        name: "meta.definition.variable.sort.maude"
+        patterns: [
+          {
+            match: "[^\\s,.:\\[\\]\\{\\}](?:,\\s*|\\S)*"
+            name: "support.type.sort.maude"
+          }
+          {
+            match: "\\[[^\\]]+\\]"
+            name: "support.type.kind.maude"
+          }
+          {
+            include: "#base"
+          }
+        ]
+      }
+      {
+        match: "\\S+"
+        name: "variable.other.var.maude"
+      }
+      {
+        include: "#base"
+      }
+    ]
+scopeName: "source.maude"

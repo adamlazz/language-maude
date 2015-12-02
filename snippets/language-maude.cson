@@ -1,96 +1,125 @@
-'.source.maude .meta.module':
-  'Conditional Equation …':
-    'prefix': 'ceq'
-    'body': 'ceq ${1:X} = ${2:Y}\n\tif ${3:true = false}${4: /\\\\ ${5:true : Bool}} .'
-  'Conditional Membership …':
-    'prefix': 'cmb'
-    'body': 'cmb ${1:X} : ${2:Elt}\n\tif ${3:true = false}${4: /\\\\ ${5:true : Bool}} .'
-  'Equation …':
-    'prefix': 'eq'
-    'body': 'eq ${1:X} = ${2:Y} .'
-  'Extending …':
-    'prefix': 'ext'
-    'body': 'extending ${1:MODULE} .'
-  'Including …':
-    'prefix': 'inc'
-    'body': 'including ${1:MODULE} .'
-  'Membership …':
-    'prefix': 'mb'
-    'body': 'mb ${1:X} : ${2:Elt} .'
-  'Operator …':
-    'prefix': 'op'
-    'body': 'op${1/.+(\\s+).+|.+/(?1:s:)/} ${1:f} : ${2:Nat}${2/.+/ /}-> ${3:Nat} .'
-  'Operators …':
-    'prefix': 'ops'
-    'body': 'op${2/.+/s/} ${1:f}${2/.+/ /}${2:g} : ${3:Nat}${3/.+/ /}-> ${4:Nat} .'
-  'Partial Operator …':
-    'prefix': '~>'
-    'body': 'op${1/.+(\\s+).+|.+/(?1:s:)/} ${1:f} : ${2:Nat}${2/.+/ /}~> ${3:Nat} .'
-  'Protecting …':
-    'prefix': 'pr'
-    'body': 'protecting ${1:MODULE} .'
-  'Sort …':
-    'prefix': 'sort'
-    'body': 'sort${1/.+(,).+|.+/(?1:s:)/} ${1:One} .'
-  'Sorts …':
-    'prefix': 'sorts'
-    'body': 'sort${2/.+/s/} ${1:One}${2/.+/, /}${2:Two} .'
-  'Subsort …':
-    'prefix': 'sub'
-    'body': 'subsort${2/.+(<).+|.+/(?1:s:)/} ${1:One} < ${2:Two} .'
-  'Subsorts …':
-    'prefix': 'subs'
-    'body': 'subsort${3/.+/s/} ${1:One} < ${2:Two}${3/.+/ < /}${3:Three} .'
-  'Total Operator …':
-    'prefix': '->'
-    'body': 'op${1/.+(\\s+).+|.+/(?1:s:)/} ${1:f} : ${2:Nat}${2/.+/ /}-> ${3:Nat} .'
-'.source.maude .meta.module.mod, .source.maude .meta.module.th':
-  'Conditional Rule …':
-    'prefix': 'crl'
-    'body': 'crl${1/.+/ [/}${1:label}${1/.+/] :/} ${2:Term} => ${3:Term}\n\tif ${4:true = false}${5: /\\\\ ${6:true : Bool}} .'
-  'Rule …':
-    'prefix': 'rl'
-    'body': 'rl${1/.+/ [/}${1:label}${1/.+/] :/} ${2:Term} => ${3:Term} .'
-'.source.maude .meta.module .meta.import':
-  'Insert Renaming':
-    'prefix': '*'
-    'body': '* ($1)'
-'.source.maude .meta.condition':
-  'Insert Condition':
-    'prefix': '/'
-    'body': '/\\\\ ${1:true : Bool}'
-'.source.maude .meta.definition.operator':
-  'Insert Operator Attributes':
-    'prefix': '['
-    'body': '[${1:ditto}'
-'.source.maude .meta.rule':
-  'Insert Statement Attributes':
-    'prefix': '['
-    'body': '[${1:nonexec}'
-'.source.maude':
-  'New Functional Module':
-    'prefix': 'fm'
-    'body': 'fmod ${1:FMOD}${2:{${3:X} :: ${4:TRIV}\\}} is\n\t$0\nendfm'
-  'New Functional Theory':
-    'prefix': 'fth'
-    'body': 'fth ${1:FTH} is\n\t$0\nendfth'
-  'New System Module':
-    'prefix': 'm'
-    'body': 'mod ${1:MOD}${2:{${3:X} :: ${4:TRIV}\\}} is\n\t$0\nendm'
-  'New System Theory':
-    'prefix': 'th'
-    'body': 'th ${1:TH} is\n\t$0\nendth'
-  'New View':
-    'prefix': 'v'
-    'body': 'view ${1:VIEW} from ${2:SOURCE} to ${3:TARGET} is\n\t$0\nendv'
-'.source.maude .meta.view':
-  'Rename Operator … to Term …':
-    'prefix': 'op'
-    'body': 'op ${1:from} to term ${2:to} .'
-'.source.maude .meta.module, .source.maude .meta.view':
-  'Variable …':
-    'prefix': 'var'
-    'body': 'var${1/.+(\\s+).+|.+/(?1:s:)/} ${1:X} : ${2:Elt} .'
-  'Variables …':
-    'prefix': 'vars'
-    'body': 'var${2/.+/s/} ${1:X}${2/.+/ /}${2:Y} : ${3:Elt} .'
+".source.maude .meta.module":
+  "Conditional Equation …":
+    prefix: "ceq"
+    body: '''
+      ceq ${1:X} = ${2:Y}
+      	if ${3:true = false}${4: /\\\\ ${5:true : Bool}} .
+    '''
+  "Conditional Membership …":
+    prefix: "cmb"
+    body: '''
+      cmb ${1:X} : ${2:Elt}
+      	if ${3:true = false}${4: /\\\\ ${5:true : Bool}} .
+    '''
+  "Equation …":
+    prefix: "eq"
+    body: "eq ${1:X} = ${2:Y} ."
+  "Extending …":
+    prefix: "ext"
+    body: "extending ${1:MODULE} ."
+  "Including …":
+    prefix: "inc"
+    body: "including ${1:MODULE} ."
+  "Membership …":
+    prefix: "mb"
+    body: "mb ${1:X} : ${2:Elt} ."
+  "Operator …":
+    prefix: "op"
+    body: "op${1/.+(\\s+).+|.+/(?1:s:)/} ${1:f} : ${2:Nat}${2/.+/ /}-> ${3:Nat} ."
+  "Operators …":
+    prefix: "ops"
+    body: "op${2/.+/s/} ${1:f}${2/.+/ /}${2:g} : ${3:Nat}${3/.+/ /}-> ${4:Nat} ."
+  "Partial Operator …":
+    prefix: "~>"
+    body: "op${1/.+(\\s+).+|.+/(?1:s:)/} ${1:f} : ${2:Nat}${2/.+/ /}~> ${3:Nat} ."
+  "Protecting …":
+    prefix: "pr"
+    body: "protecting ${1:MODULE} ."
+  "Sort …":
+    prefix: "sort"
+    body: "sort${1/.+(,).+|.+/(?1:s:)/} ${1:One} ."
+  "Sorts …":
+    prefix: "sorts"
+    body: "sort${2/.+/s/} ${1:One}${2/.+/, /}${2:Two} ."
+  "Subsort …":
+    prefix: "sub"
+    body: "subsort${2/.+(<).+|.+/(?1:s:)/} ${1:One} < ${2:Two} ."
+  "Subsorts …":
+    prefix: "subs"
+    body: "subsort${3/.+/s/} ${1:One} < ${2:Two}${3/.+/ < /}${3:Three} ."
+  "Total Operator …":
+    prefix: "->"
+    body: "op${1/.+(\\s+).+|.+/(?1:s:)/} ${1:f} : ${2:Nat}${2/.+/ /}-> ${3:Nat} ."
+".source.maude .meta.module.mod, .source.maude .meta.module.th":
+  "Conditional Rule …":
+    prefix: "crl"
+    body: '''
+      crl${1/.+/ [/}${1:label}${1/.+/] :/} ${2:Term} => ${3:Term}
+      	if ${4:true = false}${5: /\\\\ ${6:true : Bool}} .
+    '''
+  "Rule …":
+    prefix: "rl"
+    body: "rl${1/.+/ [/}${1:label}${1/.+/] :/} ${2:Term} => ${3:Term} ."
+".source.maude .meta.module .meta.import":
+  "Insert Renaming":
+    prefix: "*"
+    body: "* ($1)"
+".source.maude .meta.condition":
+  "Insert Condition":
+    prefix: "/"
+    body: "/\\\\ ${1:true : Bool}"
+".source.maude .meta.definition.operator":
+  "Insert Operator Attributes":
+    prefix: "["
+    body: "[${1:ditto}"
+".source.maude .meta.rule":
+  "Insert Statement Attributes":
+    prefix: "["
+    body: "[${1:nonexec}"
+".source.maude":
+  "New Functional Module":
+    prefix: "fm"
+    body: '''
+      fmod ${1:FMOD}${2:{${3:X} :: ${4:TRIV}\\}} is
+      	$0
+      endfm
+    '''
+  "New Functional Theory":
+    prefix: "fth"
+    body: '''
+      fth ${1:FTH} is
+      	$0
+      endfth
+    '''
+  "New System Module":
+    prefix: "m"
+    body: '''
+      mod ${1:MOD}${2:{${3:X} :: ${4:TRIV}\\}} is
+      	$0
+      endm
+    '''
+  "New System Theory":
+    prefix: "th"
+    body: '''
+      th ${1:TH} is
+      	$0
+      endth
+    '''
+  "New View":
+    prefix: "v"
+    body: '''
+      view ${1:VIEW} from ${2:SOURCE} to ${3:TARGET} is
+      	$0
+      endv
+    '''
+".source.maude .meta.view":
+  "Rename Operator … to Term …":
+    prefix: "op"
+    body: "op ${1:from} to term ${2:to} ."
+".source.maude .meta.module, .source.maude .meta.view":
+  "Variable …":
+    prefix: "var"
+    body: "var${1/.+(\\s+).+|.+/(?1:s:)/} ${1:X} : ${2:Elt} ."
+  "Variables …":
+    prefix: "vars"
+    body: "var${2/.+/s/} ${1:X}${2/.+/ /}${2:Y} : ${3:Elt} ."
